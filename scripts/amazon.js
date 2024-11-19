@@ -27,7 +27,7 @@ products.forEach((product)=>{
           </div>
 
           <div class="product-quantity-container">
-            <select>
+            <select class="js-quantity-selector-${product.id}">
               <option selected value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -59,33 +59,35 @@ productGridElement.innerHTML = productsHTML;
 const addToCartBtn = document.querySelectorAll('.js-add-to-cart-button');
 
 addToCartBtn.forEach((btn)=>{
-btn.addEventListener('click',()=>{
+  btn.addEventListener('click',()=>{
 
-let itemMatched;
+  const itemQuantity =Number( document.querySelector(`.js-quantity-selector-${btn.dataset.productId}`).value);
 
-  cart.forEach((item)=>{
-    if(btn.dataset.productId === item.productId){
-      item.quantity++;
-      itemMatched=true;
-    }
-  });
+   let itemMatched;
 
-  if(!itemMatched){
-    cart.push({
-      productId:btn.dataset.productId,
-      quantity:1
+    cart.forEach((item)=>{
+      if(btn.dataset.productId === item.productId){
+        item.quantity+=itemQuantity;
+        itemMatched=true;
+      }
     });
-  }
 
-  let carQuantity = 0;
+    if(!itemMatched){
+      cart.push({
+        productId:btn.dataset.productId,
+        quantity:itemQuantity
+      });
+    }
 
-  cart.forEach((item)=>{
-    carQuantity+=item.quantity;
+    let carQuantity = 0;
+
+    cart.forEach((item)=>{
+      carQuantity+=item.quantity;
+    });
+
+    document.querySelector('.js-cart-quantity')
+      .innerHTML=carQuantity;
+
+   
   });
-
-  document.querySelector('.js-cart-quantity')
-    .innerHTML=carQuantity;
-
-
-});
 });
