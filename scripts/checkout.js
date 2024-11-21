@@ -21,7 +21,7 @@ function renderCartItems(){
   
         cartSummaryHTML+=
         `
-  <div class="cart-item-container">
+  <div class="cart-item-container js-cart-item-container-${matchingItem.id}">
               <div class="delivery-date">
                 Delivery date: Tuesday, June 21
               </div>
@@ -102,22 +102,22 @@ function renderCartItems(){
   
     document.querySelector('.js-order-summary').innerHTML = cartSummaryHTML;
 
-    addEventListenerToDeleteBtn();
+    
 }
-
-
-renderCartItems();
-
 
 
 function addEventListenerToDeleteBtn(){
   document.querySelectorAll('.js-delete-quantity-btn').forEach((btn)=>{
     btn.addEventListener('click',()=>{
       removeItemFromCart(btn.dataset.productId);
-      renderCartItems();
+      const itemContainer = document.querySelector(`.js-cart-item-container-${btn.dataset.productId}`);
+      itemContainer.remove();
     })
   });
 }
+
+renderCartItems();
+addEventListenerToDeleteBtn();
 
 
 
