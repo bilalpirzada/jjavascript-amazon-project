@@ -67,11 +67,11 @@ let addedElementTimeoutId;
 
 
 function updateCart(){
-  
+
   let carQuantity = calculateQuantity();
 
   document.querySelector('.js-cart-quantity')
-    .innerHTML=carQuantity;
+    .innerHTML=carQuantity>0?carQuantity:'';
 }
 
 function showAddedText(addToCartElement){
@@ -103,3 +103,5 @@ addToCartBtn.forEach((btn)=>{
    
   });
 });
+
+updateCart();
