@@ -10,6 +10,7 @@ export const cart =JSON.parse(localStorage.getItem('cart')) ||
   }
 ];
 
+
 function saveToStorage(){
   localStorage.setItem('cart',JSON.stringify(cart));
 }
@@ -52,4 +53,18 @@ export function calculateQuantity(){
   })
 
   return quantity;
+}
+
+export function updateQuantity(productId, newQuantity){
+
+  console.log(productId);
+  console.log(newQuantity);
+  cart.forEach((cartItem)=>{
+      if(cartItem.productId===productId){
+        console.log(cartItem);
+        cartItem.quantity=newQuantity;
+        console.log(cartItem);
+      }
+  })
+  localStorage.setItem('cart',JSON.stringify(cart));
 }
