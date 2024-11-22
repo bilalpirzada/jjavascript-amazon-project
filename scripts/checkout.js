@@ -10,7 +10,6 @@ function renderCartItems(){
   
   cart.forEach((cartItem)=>
     {
-      console.log(cartItem);
       products.forEach((productItem)=>
         {
           if(cartItem.productId===productItem.id)
@@ -41,9 +40,11 @@ function renderCartItems(){
                     <span>
                       Quantity: <span class="quantity-label">${cartItem.quantity}</span>
                     </span>
-                    <span class="update-quantity-link link-primary">
+                    <span class="update-quantity-link link-primary js-update-quantity-link" data-product-id="${matchingItem.id}">
                       Update
                     </span>
+                    <input class="quantity-input">
+                    <span class="save-quantity-link link-primary">Save</span>
                     <span class="delete-quantity-link link-primary js-delete-quantity-btn" data-product-id="${matchingItem.id}">
                       Delete
                     </span>
@@ -121,10 +122,17 @@ function displayCheckoutItemQuanity(){
   document.querySelector('.js-cart-quantity-txt').innerHTML = calculateQuantity();
 }
 
+
 displayCheckoutItemQuanity();
 renderCartItems();
 addEventListenerToDeleteBtn();
 
 
+document.querySelectorAll('.js-update-quantity-link').forEach((updateBtn)=>{
+  updateBtn.addEventListener('click',()=>{
+    const productId = updateBtn.dataset.productId;
+    
+  })
+})
 
 
