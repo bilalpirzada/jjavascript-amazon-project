@@ -71,3 +71,14 @@ export function updateQuantity(productId, newQuantity){
   })
   localStorage.setItem('cart',JSON.stringify(cart));
 }
+
+export function updateDeliveryOption(productId, deliveryOptionId){
+  cart.forEach((carItem)=>{
+    if(carItem.productId ===productId){
+      carItem.deliveryOptionId = deliveryOptionId;
+    }
+  });
+
+  
+  localStorage.setItem('cart',JSON.stringify(cart));
+}
