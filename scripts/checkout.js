@@ -5,7 +5,7 @@ import { deliveryOptions } from '../data/deliveryOptions.js';
 
 
 
-function renderCartItems(){
+function renderOrderSummary(){
   let matchingItem;
   let cartSummaryHTML='';
   
@@ -79,7 +79,7 @@ function renderCartItems(){
     document.querySelector('.js-order-summary').innerHTML = cartSummaryHTML;
 
     
-}
+
 
 function deliveryOptionsHTML(matchingItem, cartItem){
  
@@ -135,7 +135,6 @@ function displayCheckoutItemQuanity(){
 
 
 displayCheckoutItemQuanity();
-renderCartItems();
 addEventListenerToDeleteBtn();
 
 
@@ -169,5 +168,11 @@ document.querySelectorAll('.js-delivery-option').forEach((radioElement)=>{
   radioElement.addEventListener('click',()=>{
    const {productId,deliveryOptionId} =  radioElement.dataset;
     updateDeliveryOption(productId,deliveryOptionId);
+    renderOrderSummary();
   })
 })
+
+}
+
+
+renderOrderSummary();
