@@ -2,6 +2,7 @@ import {cart, removeItemFromCart, calculateQuantity,updateQuantity,updateDeliver
 import { products } from '../../data/products.js';
 import { formatCurrency } from '../utils/money.js';
 import { deliveryOptions } from '../../data/deliveryOptions.js';
+import { renderPaymentSummary } from './paymentSummary.js';
 
 
 
@@ -125,6 +126,8 @@ function addEventListenerToDeleteBtn(){
       const itemContainer = document.querySelector(`.js-cart-item-container-${btn.dataset.productId}`);
       itemContainer.remove();
       displayCheckoutItemQuanity();
+
+      renderPaymentSummary();
     })
   });
 }
@@ -160,6 +163,8 @@ document.querySelectorAll('.js-save-quantity-link').forEach((saveBtn)=>{
       displayCheckoutItemQuanity();
       document.querySelector(`.js-quantity-label-${productId}`).innerHTML = newQuantity;
     }
+
+    renderPaymentSummary();
   })
 })
 
@@ -169,6 +174,7 @@ document.querySelectorAll('.js-delivery-option').forEach((radioElement)=>{
    const {productId,deliveryOptionId} =  radioElement.dataset;
     updateDeliveryOption(productId,deliveryOptionId);
     renderOrderSummary();
+    renderPaymentSummary();
   })
 })
 
