@@ -1,7 +1,6 @@
 
 import {cart, addToCart, calculateQuantity} from '../data/cart.js';
 import {products} from '../data/products.js';
-import { formatCurrency } from './utils/money.js';
 
 const productGridElement = document.querySelector('.js-products-grid');
 
@@ -51,6 +50,7 @@ products.forEach((product)=>{
             <img src="images/icons/checkmark.png">
             Added
           </div>
+          ${product.extraInfoHTML() }
 
           <button class="js-add-to-cart-button add-to-cart-button button-primary" data-product-id="${product.id}">
             Add to Cart
