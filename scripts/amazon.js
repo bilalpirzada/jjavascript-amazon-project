@@ -1,7 +1,10 @@
 
 import {cart, addToCart, calculateQuantity} from '../data/cart.js';
-import {products} from '../data/products.js';
+import {products,loadProducts} from '../data/products.js';
 
+loadProducts(renderProductsGrid);
+
+function renderProductsGrid(){
 const productGridElement = document.querySelector('.js-products-grid');
 
 let productsHTML='';
@@ -59,6 +62,8 @@ products.forEach((product)=>{
 });
 
 productGridElement.innerHTML = productsHTML;
+
+}
 
 const addToCartBtn = document.querySelectorAll('.js-add-to-cart-button');
 
