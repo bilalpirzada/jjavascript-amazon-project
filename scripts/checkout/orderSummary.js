@@ -3,6 +3,7 @@ import { products } from '../../data/products.js';
 import { formatCurrency } from '../utils/money.js';
 import { deliveryOptions } from '../../data/deliveryOptions.js';
 import { renderPaymentSummary } from './paymentSummary.js';
+import {placeOrder} from '../../data/orders.js';
 
 
 
@@ -179,3 +180,5 @@ document.querySelectorAll('.js-delivery-option').forEach((radioElement)=>{
 })
 
 }
+
+

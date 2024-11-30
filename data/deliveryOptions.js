@@ -16,6 +16,18 @@ export const deliveryOptions = [
   }
 ];
 
+export function getDeliveryOption(deliveryOptionId){
+    let matchingDeliveryOption;
+
+    deliveryOptions.forEach((deliveryOption)=>{
+        if(deliveryOption.id === deliveryOptionId){
+          matchingDeliveryOption = deliveryOption;
+        }
+    });
+
+    return matchingDeliveryOption;
+}
+
 
 export function getDeliveryCost(deliveryOptionId){
   let deliveryCost = 0;
