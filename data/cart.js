@@ -23,6 +23,11 @@ function saveToStorage(){
   localStorage.setItem('cart',JSON.stringify(cart));
 }
 
+export function emptyCart(){
+  cart=[];
+  saveToStorage();
+}
+
 export function addToCart(productId, quantity){
   let itemMatched;
 

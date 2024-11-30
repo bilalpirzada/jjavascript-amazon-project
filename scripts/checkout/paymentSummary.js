@@ -1,4 +1,4 @@
-import {cart} from '../../data/cart.js'
+import {cart, emptyCart} from '../../data/cart.js'
 import { getProduct, products } from '../../data/products.js';
 import { formatCurrency } from '../utils/money.js';
 import { getDeliveryCost } from '../../data/deliveryOptions.js';
@@ -87,9 +87,9 @@ export function renderPaymentSummary(){
 
     const order = placeOrder(orderTotal);
 
-    console.log(order)
+    emptyCart();
 
-   // window.location.href = 'orders.html';
+    window.location.href = 'orders.html';
   })
 
 }

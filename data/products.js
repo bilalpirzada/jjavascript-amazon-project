@@ -64,7 +64,8 @@ export function loadProductsFetch(){
 
     console.log('load products');
   }).catch((error)=>{
-    console.log(`error occured while fetching products: ${error}`)
+    console.log(`error occured while fetching products: ${error}`);
+    loadProductsFromArray();
   })
 
   return promise;
@@ -1508,6 +1509,11 @@ console.log('loading products from array Completed')
 
 export function getProduct(productId){
   let matchingItem; 
+
+  if(products.length===0){
+    console.log('products are empty')
+    loadProductsFromArray();
+  }
 
   products.forEach((product)=>{
     if(product.id===productId){
