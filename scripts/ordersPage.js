@@ -1,13 +1,18 @@
 import { orders } from "../data/orders.js";
 import { formatCurrency } from "./utils/money.js";
 import {getProduct} from '../data/products.js'
+import { cart } from "../data/cart.js";
 
 const orderGridElement =document.querySelector('.js-orders-grid');
 
 let orderContainerHTML='';
 
+if(orders.length===0){
+  orderContainerHTML="You haven'nt placed any order yet";
+}
 
 
+document.querySelector('.js-cart-quantity').innerHTML = cart.length;
 
 orders.forEach((orderItem)=>{
   let productContainerHTML = '';

@@ -2,7 +2,6 @@
 import {cart, addToCart, calculateQuantity} from '../data/cart.js';
 import {products,loadProducts, loadProductsFetch} from '../data/products.js';
 
-//loadProducts(renderProductsGrid);
 
 function renderProductsGrid(){
   const productGridElement = document.querySelector('.js-products-grid');
@@ -94,7 +93,7 @@ function showAddedText(addToCartElement){
 
 updateCart();
 
-loadProductsFetch().then(()=>{
+// loadProductsFetch().then(()=>{
   renderProductsGrid();
 
   const addToCartBtn = document.querySelectorAll('.js-add-to-cart-button');
@@ -116,7 +115,9 @@ addToCartBtn.forEach((btn)=>{
    
   });
 });
-})
+
+
+// })
 
 
 
